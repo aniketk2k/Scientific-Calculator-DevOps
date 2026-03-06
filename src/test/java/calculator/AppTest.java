@@ -29,4 +29,8 @@ public class AppTest {
     public void testPower() {
         assertEquals(8.0, App.power(2,3), 0.001);
     }
+    @Test(expected = IllegalArgumentException.class)
+    public void testLargeFactorial(){
+	App.factorial(21);
+    }
 }
