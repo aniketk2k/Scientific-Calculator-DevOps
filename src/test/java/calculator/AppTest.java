@@ -1,38 +1,32 @@
 package calculator;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+
+    @Test
+    public void testSquareRoot() {
+        assertEquals(5.0, App.sqRoot(25), 0.001);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    public void testFactorial() {
+        assertEquals(120, App.factorial(5));
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeFactorial() {
+        App.factorial(-1);
+    }
+
+    @Test
+    public void testNaturalLog() {
+        assertEquals(0.0, App.naturalLog(1), 0.001);
+    }
+
+    @Test
+    public void testPower() {
+        assertEquals(8.0, App.power(2,3), 0.001);
     }
 }
