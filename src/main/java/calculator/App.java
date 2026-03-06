@@ -15,11 +15,17 @@ public class App{
             throw new IllegalArgumentException("Factorial is not defined for negative numbers");
         }
 
-        long res = 1;
-        for(int i=1; i<=x; i++){
-            res *= i;
+        if(x > 20){
+            throw new IllegalArgumentException("Factorial only supported for numbers between 0 and 20");
         }
-        return res;
+
+        long prod = 1;
+
+        for(int i=1; i<=x; i++){
+            prod *= i;
+        }
+
+        return prod;
     }
 
     public static double naturalLog(double x){
