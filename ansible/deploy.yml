@@ -1,0 +1,14 @@
+---
+- name: Deploy Scientific Calculator Container
+  hosts: localhost
+  become: true
+
+  tasks:
+
+    - name: Pull Docker Image
+      docker_container:
+        name: scientific_calculator_container
+        image: aniketk2k/scientific_calculator:latest
+        state: started
+        recreate: true
+        tty: true
