@@ -20,16 +20,19 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image'){
+        stage('Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub',
-                         usernameVariable: 'DOCKER_USER',
-                         passwordVariable: 'DOCKER_PASS')]) {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
 
                     sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+
                     sh 'docker tag scientific_calculator aniketk2k/scientific_calculator:latest'
+
                     sh 'docker push aniketk2k/scientific_calculator:latest'
-                    sh 'docker logout'
                 }
             }
         }
