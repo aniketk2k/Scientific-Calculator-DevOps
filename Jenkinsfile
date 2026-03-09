@@ -45,8 +45,15 @@ pipeline {
     }
 
     post{
-        always{
-            echo 'Pipeline finished.'
+        success {
+            mail to: 'forwebsitesaniket@gmail.com',
+            subject: "Jenkins Build SUCCESS: Scientific Calculator",
+            body: "The Jenkins pipeline completed successfully."
+        }
+        failure {
+            mail to: 'forwebsitesaniket@gmail.com',
+            subject: "Jenkins Build FAILED: Scientific Calculator",
+            body: "The Jenkins pipeline failed. Check Jenkins logs."
         }
     }
 }
